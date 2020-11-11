@@ -14,5 +14,5 @@ every time when you update your code, you do have to stop and restart server.
 
 ### Authors
 
-* Alice Richardson - [Github Repo](https://github.com/Alicerichardson28)
+* Alice Richardson
 
