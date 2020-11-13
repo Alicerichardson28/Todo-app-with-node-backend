@@ -24,11 +24,11 @@ const todos = [
     }
 ]
 
-app.get("/", (req,res) => {
+app.get("/todos", (req,res) => {
     res.status(200).json(todos);
 });
 
-app.post("/", (req,res) => {
+app.post("/todos", (req,res) => {
     const newTodo = {
         message: req.body.message,
         id: uuidv4()
@@ -37,15 +37,15 @@ app.post("/", (req,res) => {
     res.status(201).json(todos);
 })
 
-app.delete("/", (req,res) => {
-    const id = req.body._id;
+// app.delete("/", (req,res) => {
+//     const id = req.body._id;
 
-    todos.findById(id).remove ((err, result) => {
-        if(err) res.send({ success: false, msg: err});
+//     todos.findById(id).remove ((err, result) => {
+//         if(err) res.send({ success: false, msg: err});
 
-        res.send({ success: true, result: result});
-    })
-})
+//         res.send({ success: true, result: result});
+//     })
+// })
 
 const PORT = 5001;
 app.listen(PORT, () => {
