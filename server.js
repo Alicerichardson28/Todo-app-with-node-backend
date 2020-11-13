@@ -37,6 +37,16 @@ app.post("/", (req,res) => {
     res.status(201).json(todos);
 })
 
+app.delete("/", (req,res) => {
+    const id = req.body._id;
+
+    todos.findById(id).remove ((err, result) => {
+        if(err) res.send({ success: false, msg: err});
+
+        res.send({ success: true, result: result});
+    })
+})
+
 const PORT = 5001;
 app.listen(PORT, () => {
     console.log(`server running on port: ${PORT}`)
