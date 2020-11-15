@@ -11,16 +11,16 @@ app.use(express.json({ extended: false }))
 
 const todos = [
     {
-        message: "Wash Car...",
-        id:1
+        id:1,
+        message: "Wash Car..."
     },
     {
-        message: "Pay phone bill...",
-        id:2
+        id:2,
+        message: "Pay phone bill..."
     },
     {
-        message: "Prep food...",
-        id:3
+        id:3,
+        message: "Prep food..."
     }
 ]
 
@@ -37,15 +37,16 @@ app.post("/todos", (req,res) => {
     res.status(201).json(todos);
 })
 
-// app.delete("/", (req,res) => {
-//     const id = req.body._id;
+app.put("/todos/:id", (req,res) => {
 
-//     todos.findById(id).remove ((err, result) => {
-//         if(err) res.send({ success: false, msg: err});
+})
 
-//         res.send({ success: true, result: result});
-//     })
-// })
+app.delete("/todos/:id", (req,res) => {
+
+})
+
+
+
 
 const PORT = 5001;
 app.listen(PORT, () => {
