@@ -54,7 +54,15 @@ app.put("/todos/:id", (req,res) => {
 })
 
 app.delete("/todos/:id", (req,res) => {
-
+    let found = todos.some(todo => todo.id === parseInt(req.params.id))
+    if(found) {
+        res.json({
+            msg: 'delete successful',
+            todos: todos.filter(todo => todo.id !== parseInt(req.params.id))
+        })
+    } else {
+        res.status(400).json({ msg: `No todo with the id of ${req.params.id}`})
+    }
 })
 
 
