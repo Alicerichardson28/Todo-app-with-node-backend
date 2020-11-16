@@ -38,7 +38,19 @@ app.post("/todos", (req,res) => {
 })
 
 app.put("/todos/:id", (req,res) => {
+    let found = todos.some(todo => todo.id === parseInt(req.params.id))
 
+    if(found){
+        const updateTodo = req.body
+        todos.forEach(todo => {
+            if (todo.id === parseInt(req.params.id)) {
+                todo.message = updateTodo.message ? updateTodo.message : todo.message
+                res.json({ msg: 'Todo got update', todo })
+            }
+        })
+    } else {
+        res.status(400).json({ msg: `No todo with the id of ${req.params.id}`})
+    }
 })
 
 app.delete("/todos/:id", (req,res) => {
